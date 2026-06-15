@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__visualize__read_me",
+      "Read(//c/Users/dave/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/a2a0d233-c99b-4f43-a26b-8d3a084a2d20/91f4a36c-f868-4096-881a-313e6161dba6/skills/docx/**)",
+      "Bash(pandoc --track-changes=all \"C:\\\\Users\\\\dave\\\\Downloads\\\\Hope & Love Brand & Style Guide \\(1\\).docx\" -o output.md)",
+      "Bash(python scripts/office/unpack.py \"C:\\\\Users\\\\dave\\\\Downloads\\\\Hope & Love Brand & Style Guide \\(1\\).docx\" unpacked/)",
+      "Bash(pip install *)",
+      "Bash(python -c ' *)",
+      "Read(//c/Users/dave/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/**)",
+      "Bash(python scripts/office/unpack.py \"C:\\\\Users\\\\dave\\\\Downloads\\\\addiction_therapy_seo_site_plan_developer_brief_ontario_no_cbt.docx\" \"C:\\\\Users\\\\dave\\\\Downloads\\\\seo_brief_unpacked\")",
+      "PowerShell($skillDir = \\(Get-ChildItem \"C:\\\\Users\\\\dave\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\" -Directory | Select-Object -First 1\\).FullName; python \"$skillDir\\\\scripts\\\\office\\\\unpack.py\" \"C:\\\\Users\\\\dave\\\\Downloads\\\\addiction_therapy_seo_site_plan_developer_brief_ontario_no_cbt.docx\" \"C:\\\\Users\\\\dave\\\\Downloads\\\\seo_brief_unpacked\" 2>&1 | Select-Object -First 10)",
+      "Bash(gh auth *)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
