@@ -213,15 +213,26 @@ document.querySelectorAll('.nav-links a').forEach(a => {
 // ===== Contact form =====
 const form = document.getElementById('contactForm');
 if (form) {
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
     btn.disabled = true;
     btn.textContent = 'Sending…';
-    setTimeout(() => {
+
+    try {
+      const data = new FormData(form);
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString(),
+      });
       form.style.display = 'none';
       const success = document.getElementById('formSuccess');
       if (success) success.style.display = 'block';
-    }, 900);
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+      alert('Something went wrong. Please try again or email matt@hopeandlove.ca directly.');
+    }
   });
 }
