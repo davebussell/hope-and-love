@@ -1358,6 +1358,29 @@ a.mega-col-head:hover {
 @media (max-width: 800px) {
   :root { --section-gap: 3.5rem; }
 
+  /* Entry cards — stack vertically */
+  .entry-grid { grid-template-columns: 1fr; }
+
+  /* Brand story — stack aside above body */
+  .story-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .story-aside { position: static; }
+
+  /* Who we help cards — ensure single column at small sizes */
+  .cards-grid { grid-template-columns: 1fr; }
+
+  /* Article + sidebar — stack sidebar below article */
+  [style*="grid-template-columns:1fr 320px"],
+  [style*="grid-template-columns: 1fr 320px"] {
+    display: block !important;
+  }
+  [style*="grid-template-columns:1fr 320px"] > *:last-child,
+  [style*="grid-template-columns: 1fr 320px"] > *:last-child {
+    margin-top: 2.5rem;
+  }
+
+  /* CTA inner — stack vertically */
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+
   .nav-toggle { display: flex; }
   .nav-links {
     display: none;
