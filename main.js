@@ -128,10 +128,19 @@
       concentricRings(bx, by, br, 5, col, a, 0.55);
     });
 
-    // ── Soft central glow to anchor hero text ──
+    // ── Deep blue pulsing glow behind hero text ──
+    const bluePulse = 0.13 + Math.sin(t * 0.35) * 0.07;
+    const blueGlow = ctx.createRadialGradient(W * 0.38, H * 0.48, 0, W * 0.38, H * 0.48, W * 0.55);
+    blueGlow.addColorStop(0,   rgba([30, 80, 180], bluePulse));
+    blueGlow.addColorStop(0.45, rgba([20, 55, 140], bluePulse * 0.45));
+    blueGlow.addColorStop(1,   rgba([10, 22, 60], 0));
+    ctx.fillStyle = blueGlow;
+    ctx.fillRect(0, 0, W, H);
+
+    // ── Soft gold accent glow to anchor hero text ──
     const glow = ctx.createRadialGradient(W * 0.3, H * 0.5, 0, W * 0.3, H * 0.5, W * 0.45);
-    glow.addColorStop(0,   rgba(GOLD, 0.06 + Math.sin(t * 0.5) * 0.02));
-    glow.addColorStop(0.6, rgba(GOLD, 0.02));
+    glow.addColorStop(0,   rgba(GOLD, 0.05 + Math.sin(t * 0.5) * 0.02));
+    glow.addColorStop(0.6, rgba(GOLD, 0.015));
     glow.addColorStop(1,   rgba(GOLD, 0));
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, W, H);
