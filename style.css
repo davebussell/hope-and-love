@@ -393,14 +393,27 @@ a { color: inherit; text-decoration: none; }
 }
 .hero-trust span::before { content: '✓  '; }
 
-.hero-wave {
+.hero-wave,
+.wave-bottom {
   position: absolute;
   bottom: -1px;
   left: 0;
   right: 0;
   line-height: 0;
+  pointer-events: none;
 }
-.hero-wave svg { width: 100%; height: 64px; }
+.hero-wave svg,
+.wave-bottom svg { width: 100%; height: 56px; display: block; }
+
+/* Sections that use wave-bottom need relative positioning and extra bottom space */
+.entry-points,
+.brand-story,
+.meet-matt,
+.approach {
+  position: relative;
+  overflow: visible;
+  padding-bottom: calc(var(--section-gap) + 2rem);
+}
 
 /* ===== Who We Help / Cards ===== */
 .who-help { background: var(--bg); }
@@ -1121,9 +1134,9 @@ details div {
 .tagline-banner {
   background: var(--blue-light);
   border-top: 1px solid var(--blue-mid);
-  border-bottom: 1px solid var(--blue-mid);
-  padding: 1.25rem 0;
+  padding: 1.25rem 0 3.5rem;
   text-align: center;
+  position: relative;
 }
 .tagline-banner p {
   font-family: var(--font-serif);
