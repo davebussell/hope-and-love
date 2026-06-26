@@ -232,8 +232,33 @@ a { color: inherit; text-decoration: none; }
 }
 
 .logo-amp {
-  color: #c9a84c;
+  color: #e8c76a;
   margin: 0 .05em;
+  position: relative;
+  display: inline-block;
+  animation: ampGlow 4s ease-in-out infinite;
+}
+
+.logo-amp::before {
+  content: '';
+  position: absolute;
+  inset: -6px -8px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(216,182,106,.55) 0%, rgba(216,182,106,.2) 45%, transparent 75%);
+  animation: ampPulse 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+@keyframes ampGlow {
+  0%, 100% { text-shadow: 0 0 8px rgba(232,199,106,.6), 0 0 20px rgba(216,182,106,.3); }
+  50%       { text-shadow: 0 0 14px rgba(232,199,106,.9), 0 0 35px rgba(216,182,106,.5), 0 0 55px rgba(200,160,80,.2); }
+}
+
+@keyframes ampPulse {
+  0%, 100% { transform: scale(.85); opacity: .6; }
+  50%       { transform: scale(1.25); opacity: 1; }
 }
 
 .logo-descriptor {
