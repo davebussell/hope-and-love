@@ -149,9 +149,6 @@ a { color: inherit; text-decoration: none; }
   font-size: .75rem;
   font-weight: 600;
   letter-spacing: .03em;
-  position: sticky;
-  top: 0;
-  z-index: 101;
 }
 .top-bar-inner {
   display: flex;
@@ -197,7 +194,7 @@ a { color: inherit; text-decoration: none; }
 /* ===== Header / Nav ===== */
 .site-header {
   position: sticky;
-  top: 2rem;
+  top: 0;
   z-index: 100;
   background: rgba(10,22,40,.97);
   backdrop-filter: blur(10px);
