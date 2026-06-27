@@ -46,7 +46,7 @@
   --section-gap: 5rem;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: #0a1628; }
 
 body {
   font-family: var(--font-sans);
