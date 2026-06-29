@@ -190,6 +190,12 @@ a { color: inherit; text-decoration: none; }
   font-weight: 700;
 }
 .top-bar-fees a:hover { opacity: .65; text-decoration: underline; }
+.top-bar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+.top-bar-right a:first-child { border-left: 1px solid rgba(10,22,40,.2); }
 
 /* ===== Header / Nav ===== */
 .site-header {
@@ -1460,6 +1466,7 @@ a.mega-col-head:hover {
   .top-bar-inner { gap: 0; justify-content: center; }
   .top-bar a { border-right: none; border-left: none; padding: .2rem .65rem; }
   .top-bar a:first-of-type { border-left: none; }
+  .top-bar-right { display: none; }
 
   /* Mobile mega menu */
   .mega-trigger {
