@@ -219,6 +219,38 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   }
 });
 
+// ===== Scroll reveal =====
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const els = document.querySelectorAll('.cards-grid .card, .entry-grid .entry-card, .steps .step, .resource-grid .resource-card');
+  if (!els.length) return;
+
+  els.forEach(el => {
+    const idx = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+    el.classList.add('reveal-init');
+    el.style.transitionDelay = Math.min(idx * 70, 350) + 'ms';
+  });
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      el.classList.add('reveal-in');
+      io.unobserve(el);
+      // Hand transitions back to the hover styles once the reveal finishes
+      el.addEventListener('transitionend', function done() {
+        el.classList.remove('reveal-init', 'reveal-in');
+        el.style.transitionDelay = '';
+        el.removeEventListener('transitionend', done);
+      });
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+
+  els.forEach(el => io.observe(el));
+})();
+
 // ===== Contact form =====
 const form = document.getElementById('contactForm');
 if (form) {
