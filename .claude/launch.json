@@ -7,13 +7,6 @@
       "runtimeArgs": ["serve", "."],
       "port": 3000,
       "autoPort": true
-    },
-    {
-      "name": "ritual-rollers",
-      "runtimeExecutable": ".claude\\run-ritual-rollers.cmd",
-      "runtimeArgs": [],
-      "port": 3000,
-      "autoPort": true
     }
   ]
 }
