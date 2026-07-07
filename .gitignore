@@ -1,2 +1,5 @@
 # Local helper scripts not part of the site
 .claude/run-ritual-rollers.cmd
+
+# Local Netlify folder
+.netlify
