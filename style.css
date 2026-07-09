@@ -1647,3 +1647,46 @@ summary:focus-visible {
   /* CTA section */
   .cta-inner h2 { font-size: 1.6rem; }
 }
+
+/* ===== Cookie Consent ===== */
+.cookie-consent { position: fixed; left: 1.25rem; right: 1.25rem; bottom: 1.25rem; z-index: 1000; max-width: 560px; margin: 0 auto; background: var(--warm-white); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: 0 12px 44px rgba(38,50,56,.20); padding: 1.5rem 1.6rem; font-size: .9rem; color: var(--text-mid); transform: translateY(150%); opacity: 0; transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .5s ease; }
+.cookie-consent.is-visible { transform: translateY(0); opacity: 1; }
+.cookie-consent[hidden] { display: none; }
+.cookie-consent__title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; color: var(--charcoal); margin-bottom: .4rem; }
+.cookie-consent__text { line-height: 1.6; margin-bottom: 1.1rem; }
+.cookie-consent__text a { color: var(--blue); text-decoration: underline; }
+.cookie-consent__actions { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.cookie-btn { display: inline-flex; align-items: center; justify-content: center; padding: .58rem 1.35rem; border-radius: 100px; font-family: var(--font-sans); font-size: .85rem; font-weight: 600; cursor: pointer; border: 1px solid transparent; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+.cookie-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.cookie-btn--accept { background: var(--gold); color: var(--charcoal); border-color: var(--gold); }
+.cookie-btn--accept:hover { background: #c4a056; border-color: #c4a056; }
+.cookie-btn--decline { background: transparent; color: var(--charcoal); border-color: var(--border); }
+.cookie-btn--decline:hover { border-color: var(--text-soft); background: var(--ivory); }
+.cookie-btn--manage { background: none; border: none; color: var(--blue); text-decoration: underline; padding: .58rem .4rem; margin-left: auto; font-weight: 500; }
+.cookie-btn--manage:hover { color: var(--blue-dark); }
+.cookie-btn--save { display: none; }
+.cookie-consent.is-managing .cookie-btn--manage { display: none; }
+.cookie-consent.is-managing .cookie-btn--save { display: inline-flex; }
+.cookie-consent__prefs { display: none; margin: .25rem 0 1.1rem; }
+.cookie-consent.is-managing .cookie-consent__prefs { display: block; }
+.cookie-pref { display: flex; align-items: flex-start; gap: .85rem; padding: .7rem 0; border-top: 1px solid var(--border); }
+.cookie-pref__label { flex: 1; }
+.cookie-pref__name { font-weight: 600; color: var(--charcoal); font-size: .875rem; }
+.cookie-pref__desc { font-size: .8rem; color: var(--text-soft); line-height: 1.5; margin-top: .15rem; }
+.cookie-switch { position: relative; flex-shrink: 0; width: 40px; height: 22px; margin-top: .1rem; }
+.cookie-switch input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.cookie-switch__track { position: absolute; inset: 0; background: var(--blue-mid); border-radius: 100px; transition: background .2s ease; pointer-events: none; }
+.cookie-switch__track::before { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; background: var(--white); border-radius: 50%; transition: transform .2s ease; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+.cookie-switch input:checked + .cookie-switch__track { background: var(--sage-dark); }
+.cookie-switch input:checked + .cookie-switch__track::before { transform: translateX(18px); }
+.cookie-switch input:disabled + .cookie-switch__track { background: var(--sage); opacity: .65; }
+.cookie-switch input:focus-visible + .cookie-switch__track { outline: 2px solid var(--blue); outline-offset: 2px; }
+@media (max-width: 520px) {
+  .cookie-consent { left: .7rem; right: .7rem; bottom: .7rem; padding: 1.25rem; }
+  .cookie-btn--accept, .cookie-btn--decline { flex: 1 1 auto; }
+  .cookie-btn--manage { margin-left: 0; width: 100%; order: 3; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cookie-consent { transition: opacity .25s ease; transform: none; }
+  .cookie-consent.is-visible { transform: none; }
+}

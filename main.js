@@ -277,3 +277,115 @@ if (form) {
     }
   });
 }
+
+// ===== Cookie Consent (Google Consent Mode v2) =====
+(function () {
+  var KEY = 'hl_consent_v1';
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ window.dataLayer.push(arguments); }
+  if (typeof window.gtag !== 'function') { window.gtag = gtag; }
+
+  function read() { try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; } }
+  function save(c) { try { localStorage.setItem(KEY, JSON.stringify(c)); } catch (e) {} }
+  function apply(c) {
+    window.gtag('consent', 'update', {
+      analytics_storage:  c.analytics ? 'granted' : 'denied',
+      ad_storage:         c.marketing ? 'granted' : 'denied',
+      ad_user_data:       c.marketing ? 'granted' : 'denied',
+      ad_personalization: c.marketing ? 'granted' : 'denied'
+    });
+  }
+
+  var saved = read();
+  if (saved && typeof saved === 'object') { apply(saved); }
+
+  var banner = null;
+
+  function prefRow(id, name, desc, checked, disabled) {
+    return '<div class="cookie-pref"><div class="cookie-pref__label">' +
+      '<div class="cookie-pref__name">' + name + '</div>' +
+      '<div class="cookie-pref__desc">' + desc + '</div></div>' +
+      '<label class="cookie-switch"><input type="checkbox" data-cc-pref="' + id + '"' +
+      (checked ? ' checked' : '') + (disabled ? ' disabled' : '') +
+      ' aria-label="' + name + '"><span class="cookie-switch__track"></span></label></div>';
+  }
+
+  function build() {
+    var el = document.createElement('div');
+    el.className = 'cookie-consent';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-label', 'Cookie consent');
+    el.innerHTML =
+      '<div class="cookie-consent__title">Your privacy matters</div>' +
+      '<p class="cookie-consent__text">We use cookies to keep this site running and, with your consent, to measure how it is used and improve our advertising. See our <a href="privacy-policy.html">Privacy &amp; Cookie Policy</a>.</p>' +
+      '<div class="cookie-consent__prefs">' +
+        prefRow('necessary', 'Strictly necessary', 'Required for the site to function. Always on.', true, true) +
+        prefRow('analytics', 'Analytics', 'Helps us understand how the site is used (Google Analytics).', false, false) +
+        prefRow('marketing', 'Marketing', 'Measures and improves our advertising (Google Ads).', false, false) +
+      '</div>' +
+      '<div class="cookie-consent__actions">' +
+        '<button type="button" class="cookie-btn cookie-btn--accept" data-cc="accept">Accept all</button>' +
+        '<button type="button" class="cookie-btn cookie-btn--decline" data-cc="decline">Decline</button>' +
+        '<button type="button" class="cookie-btn cookie-btn--manage" data-cc="manage">Manage preferences</button>' +
+        '<button type="button" class="cookie-btn cookie-btn--accept cookie-btn--save" data-cc="save">Save choices</button>' +
+      '</div>';
+    el.addEventListener('click', onClick);
+    return el;
+  }
+
+  function onClick(e) {
+    var t = e.target && e.target.closest ? e.target.closest('[data-cc]') : null;
+    if (!t) return;
+    var action = t.getAttribute('data-cc');
+    if (action === 'accept') commit({ analytics: true, marketing: true });
+    else if (action === 'decline') commit({ analytics: false, marketing: false });
+    else if (action === 'manage') banner.classList.add('is-managing');
+    else if (action === 'save') {
+      commit({
+        analytics: !!banner.querySelector('[data-cc-pref="analytics"]').checked,
+        marketing: !!banner.querySelector('[data-cc-pref="marketing"]').checked
+      });
+    }
+  }
+
+  function reflect() {
+    var s = read();
+    if (!s || !banner) return;
+    var a = banner.querySelector('[data-cc-pref="analytics"]');
+    var m = banner.querySelector('[data-cc-pref="marketing"]');
+    if (a) a.checked = !!s.analytics;
+    if (m) m.checked = !!s.marketing;
+  }
+
+  function show(managing) {
+    if (!banner) { banner = build(); document.body.appendChild(banner); }
+    banner.removeAttribute('hidden');
+    if (managing) { banner.classList.add('is-managing'); reflect(); }
+    requestAnimationFrame(function () { banner.classList.add('is-visible'); });
+  }
+
+  function hide() {
+    if (!banner) return;
+    banner.classList.remove('is-visible', 'is-managing');
+    setTimeout(function () {
+      if (banner && !banner.classList.contains('is-visible')) banner.setAttribute('hidden', '');
+    }, 550);
+  }
+
+  function commit(choice) {
+    var c = { necessary: true, analytics: !!choice.analytics, marketing: !!choice.marketing, ts: Date.now() };
+    save(c); apply(c); hide();
+  }
+
+  window.hlOpenCookieSettings = function () { show(true); };
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest ? e.target.closest('[data-cookie-settings]') : null;
+    if (t) { e.preventDefault(); window.hlOpenCookieSettings(); }
+  });
+
+  if (!saved) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () { show(false); });
+    } else { show(false); }
+  }
+})();
