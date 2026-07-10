@@ -316,18 +316,19 @@ if (form) {
     el.setAttribute('role', 'dialog');
     el.setAttribute('aria-label', 'Cookie consent');
     el.innerHTML =
-      '<div class="cookie-consent__title">Your privacy matters</div>' +
-      '<p class="cookie-consent__text">We use cookies to keep this site running and, with your consent, to measure how it is used and improve our advertising. See our <a href="privacy-policy.html">Privacy &amp; Cookie Policy</a>.</p>' +
-      '<div class="cookie-consent__prefs">' +
-        prefRow('necessary', 'Strictly necessary', 'Required for the site to function. Always on.', true, true) +
-        prefRow('analytics', 'Analytics', 'Helps us understand how the site is used (Google Analytics).', false, false) +
-        prefRow('marketing', 'Marketing', 'Measures and improves our advertising (Google Ads).', false, false) +
-      '</div>' +
-      '<div class="cookie-consent__actions">' +
-        '<button type="button" class="cookie-btn cookie-btn--accept" data-cc="accept">Accept all</button>' +
-        '<button type="button" class="cookie-btn cookie-btn--decline" data-cc="decline">Decline</button>' +
-        '<button type="button" class="cookie-btn cookie-btn--manage" data-cc="manage">Manage preferences</button>' +
-        '<button type="button" class="cookie-btn cookie-btn--accept cookie-btn--save" data-cc="save">Save choices</button>' +
+      '<div class="cookie-consent__inner">' +
+        '<p class="cookie-consent__text">We use a few cookies to see how this site is used and to improve our ads, only if you say yes. <a href="privacy-policy.html">Learn more</a>.</p>' +
+        '<div class="cookie-consent__prefs">' +
+          prefRow('necessary', 'Strictly necessary', 'Required for the site to function. Always on.', true, true) +
+          prefRow('analytics', 'Analytics', 'Helps us understand how the site is used (Google Analytics).', false, false) +
+          prefRow('marketing', 'Marketing', 'Measures and improves our advertising (Google Ads).', false, false) +
+        '</div>' +
+        '<div class="cookie-consent__actions">' +
+          '<button type="button" class="cookie-btn cookie-btn--manage" data-cc="manage">Preferences</button>' +
+          '<button type="button" class="cookie-btn cookie-btn--decline" data-cc="decline">Decline</button>' +
+          '<button type="button" class="cookie-btn cookie-btn--accept" data-cc="accept">Accept</button>' +
+          '<button type="button" class="cookie-btn cookie-btn--accept cookie-btn--save" data-cc="save">Save choices</button>' +
+        '</div>' +
       '</div>';
     el.addEventListener('click', onClick);
     return el;
