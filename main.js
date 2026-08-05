@@ -270,6 +270,11 @@ if (form) {
       form.style.display = 'none';
       const success = document.getElementById('formSuccess');
       if (success) success.style.display = 'block';
+
+      // Google Ads conversion — Submit lead form (fires on successful submission)
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'ads_conversion_Form_1', {});
+      }
     } catch {
       btn.disabled = false;
       btn.textContent = 'Send message';
