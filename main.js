@@ -270,11 +270,6 @@ if (form) {
       form.style.display = 'none';
       const success = document.getElementById('formSuccess');
       if (success) success.style.display = 'block';
-
-      // Google Ads conversion — Submit lead form (fires on successful submission)
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'ads_conversion_Form_1', {});
-      }
     } catch {
       btn.disabled = false;
       btn.textContent = 'Send message';
@@ -282,6 +277,17 @@ if (form) {
     }
   });
 }
+
+// ===== Google Ads conversion — booking link click (JaneApp) =====
+(function () {
+  document.addEventListener('click', function (e) {
+    var link = e.target && e.target.closest ? e.target.closest('a[href*="janeapp.com"]') : null;
+    if (!link) return;
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'ads_conversion_Form_1', {});
+    }
+  });
+})();
 
 // ===== Cookie Consent (Google Consent Mode v2) =====
 (function () {
