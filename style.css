@@ -1701,3 +1701,18 @@ summary:focus-visible {
 /* ===== Header logo mark ===== */
 .logo-svg { height: 38px; width: auto; display: block; }
 @media (max-width: 500px) { .logo-svg { height: 31px; } }
+/* ===== Footer locations strip ===== */
+.footer-locations {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem 0;
+  padding: 1.1rem 1.5rem;
+  border-top: 1px solid rgba(255,255,255,.08);
+  font-size: .8rem;
+}
+.footer-locations-label { color: rgba(255,255,255,.5); font-weight: 600; margin-right: .5rem; white-space: nowrap; }
+.footer-locations a { color: rgba(255,255,255,.55); text-decoration: none; padding: .1rem .75rem; border-right: 1px solid rgba(255,255,255,.14); white-space: nowrap; transition: color .15s; }
+.footer-locations a:hover { color: #fff; }
+.footer-locations a:last-child { border-right: none; }
+@media (max-width: 640px) { .footer-locations { font-size: .76rem; padding: 1rem 1.25rem; } .footer-locations a { padding: .1rem .55rem; } }

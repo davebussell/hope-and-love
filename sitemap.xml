@@ -82,6 +82,11 @@
   <url><loc>https://hopeandlove.ca/emdr-therapy-belleville.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://hopeandlove.ca/emdr-therapy-prince-edward-county.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
 
+  <!-- Therapy approaches / modalities -->
+  <url><loc>https://hopeandlove.ca/cbt-therapy.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hopeandlove.ca/eft-couples-therapy.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://hopeandlove.ca/ifs-therapy.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+
   <!-- Legal -->
   <url><loc>https://hopeandlove.ca/privacy-policy.html</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
 
