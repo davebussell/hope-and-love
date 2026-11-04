@@ -1720,6 +1720,8 @@ summary:focus-visible {
 /* ===== Top-bar location pin ===== */
 .top-bar a.top-bar-loc { display: inline-flex; align-items: center; gap: .4rem; padding: .15rem 0; border-left: none; border-right: none; }
 .top-bar-pin { width: 13px; height: 13px; flex: 0 0 auto; }
+.top-bar a.top-bar-virtual { margin-left: 1rem; padding-left: 1rem; border-left: 1px solid rgba(10,22,40,.25); }
+@media (max-width: 640px) { .top-bar a.top-bar-virtual { margin-left: .5rem; padding-left: .6rem; } }
 
 /* ===== Compact dropdowns (desktop only; the 800px mobile reset still wins there) ===== */
 @media (min-width: 801px) {
