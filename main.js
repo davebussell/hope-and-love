@@ -270,6 +270,7 @@ if (form) {
       form.style.display = 'none';
       const success = document.getElementById('formSuccess');
       if (success) success.style.display = 'block';
+      if (typeof window.gtag === 'function') { window.gtag('event', 'ads_conversion_Contact_Us_1', {}); }
     } catch {
       btn.disabled = false;
       btn.textContent = 'Send message';
@@ -284,7 +285,8 @@ if (form) {
     var link = e.target && e.target.closest ? e.target.closest('a[href*="janeapp.com"]') : null;
     if (!link) return;
     if (typeof window.gtag === 'function') {
-      window.gtag('event', 'ads_conversion_Form_1', {});
+      window.gtag('event', 'ads_conversion_Book_appointment_1', {});
+      window.gtag('event', 'ads_conversion_Form_1', {}); // legacy name kept so historical reporting stays continuous
     }
   });
 })();
